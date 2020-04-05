@@ -1,2 +1,2 @@
 # worldmap
-Render Telegraf.conf files to populate Grafana World Map
+Render Telegraf.conf files to populate a Grafana World Map
