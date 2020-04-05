@@ -1,0 +1,20 @@
+[ntp]
+de.pool.ntp.org geohash=u336 #Germany
+es.pool.ntp.org geohash=ezjm #Spain
+no.pool.ntp.org geohash=u4xs #Norway
+uk.pool.ntp.org geohash=gcpu #United Kingdom
+eg.pool.ntp.org geohash=stq4 #Egypt
+za.pool.ntp.org geohash=kekj #South Afrika
+hk.pool.ntp.org geohash=wecp #Hong Kong
+sg.pool.ntp.org geohash=w21z #Singapore
+in.pool.ntp.org geohash=ttnf #Indien
+ca.pool.ntp.org geohash=f244 #Canada
+mx.pool.ntp.org geohash=9g3w #Mexico
+us.pool.ntp.org geohash=dqcj #USA
+au.pool.ntp.org geohash=r3gx #Australia
+br.pool.ntp.org geohash=6vjy #Brazil
+cl.pool.ntp.org geohash=66j9 #Chile
+ru.pool.ntp.org geohash=ucft #Russia
+
+[tooling]
+grafanapi ansible_host=192.168.1.12 ansible_ssh_user=pi ansible_ssh_pass=<PASSWORD>
