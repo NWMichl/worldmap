@@ -2,9 +2,11 @@
 
 [[inputs.ping]]
   urls = ["{{ inventory_hostname }}"]
-  count = 5
+  interval = "60s"
+  count = 4
   ping_interval = 1.0
-  timeout = 5.0
+  timeout = 1.0
+  deadline = 10
 
   [inputs.ping.tags]
      geohash="{{ geohash }}"
