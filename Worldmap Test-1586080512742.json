@@ -1,0 +1,194 @@
+{
+  "__inputs": [
+    {
+      "name": "DS_INFLUXDB",
+      "label": "InfluxDB",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "influxdb",
+      "pluginName": "InfluxDB"
+    }
+  ],
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "6.1.6"
+    },
+    {
+      "type": "panel",
+      "id": "grafana-worldmap-panel",
+      "name": "Worldmap Panel",
+      "version": "0.2.1"
+    },
+    {
+      "type": "datasource",
+      "id": "influxdb",
+      "name": "InfluxDB",
+      "version": "1.0.0"
+    }
+  ],
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": null,
+  "links": [],
+  "panels": [
+    {
+      "circleMaxSize": "5",
+      "circleMinSize": "5",
+      "colors": [
+        "#37872D",
+        "#FA6400",
+        "#C4162A"
+      ],
+      "datasource": "${DS_INFLUXDB}",
+      "decimals": 0,
+      "esGeoPoint": "geohash",
+      "esLocationName": "url",
+      "esMetric": "metric",
+      "gridPos": {
+        "h": 14,
+        "w": 10,
+        "x": 0,
+        "y": 0
+      },
+      "hideEmpty": false,
+      "hideZero": false,
+      "id": 2,
+      "initialZoom": "2",
+      "interval": "",
+      "jsonUrl": "",
+      "links": [],
+      "locationData": "table",
+      "mapCenter": "custom",
+      "mapCenterLatitude": "0",
+      "mapCenterLongitude": "0",
+      "maxDataPoints": 1,
+      "mouseWheelZoom": true,
+      "showLegend": true,
+      "stickyLabels": false,
+      "tableQueryOptions": {
+        "geohashField": "geohash",
+        "labelField": "url",
+        "latitudeField": "latitude",
+        "longitudeField": "longitude",
+        "metricField": "metric",
+        "queryType": "geohash"
+      },
+      "targets": [
+        {
+          "alias": "",
+          "groupBy": [
+            {
+              "params": [
+                "geohash"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "url"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "ping",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT percent_packet_loss AS \"metric\" FROM \"ping\" WHERE (\"geohash\" != '') AND time > now() - 2m GROUP BY \"geohash\", \"url\" LIMIT 1",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "percent_packet_loss"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "metric"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "geohash",
+              "operator": "=",
+              "value": "u1jjh793m2nh"
+            }
+          ]
+        }
+      ],
+      "thresholds": "25,100",
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "NTP World Map",
+      "type": "grafana-worldmap-panel",
+      "unitPlural": "%",
+      "unitSingle": "",
+      "unitSingular": "%",
+      "valueName": "current"
+    }
+  ],
+  "refresh": "30s",
+  "schemaVersion": 18,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "hidden": false,
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "timezone": "",
+  "title": "Worldmap Test",
+  "uid": "H4J4GzzRk",
+  "version": 17
+}
