@@ -1,0 +1,54 @@
+# Playbook to manage telegraf configuration files for every ansible host with additional geohash value
+#
+# VARS: telegrafhost - The Telegraf instance to configure, specified by FQDN or IP
+
+
+---
+- name: GRAFANA WORLD MAP CONFIG
+  hosts: all
+  ignore_errors: no
+  gather_facts: no
+  vars:
+    telegrafhost: grafanapi
+
+  tasks:
+
+  - name: TEMPLATE OUT TELEGRAF.CONF FILES
+    template:
+      src: grafanawm.j2
+      dest: /etc/telegraf/telegraf.d/{{inventory_hostname}}_wm.conf
+    delegate_to: "{{ telegrafhost }}"
+    when: geohash is defined
+    notify: RELOAD TELEGRAF
+
+  - name: READ LIST OF ALL TELEGRAF.CONF FILES IN DIRECTORY
+    find:
+      paths: /etc/telegraf/telegraf.d/
+      file_type: file
+      recurse: no
+      patterns: "*wm.conf"
+    delegate_to: "{{ telegrafhost }}"
+    register: files_matched
+    run_once: true
+
+  - name: DELETE STALE TELEGRAF.CONF FILES
+    file:
+      path: "{{ item.path }}"
+      state: absent
+    loop: "{{ files_matched.files|flatten(levels=1) }}"
+    loop_control:
+      label: "{{ item.path }}"
+    delegate_to: "{{ telegrafhost }}"
+    when: (item.path | basename | regex_replace('_wm.conf') not in ansible_play_hosts_all)
+    notify: RELOAD TELEGRAF
+    run_once: true
+
+  handlers:
+
+  - name: RELOAD TELEGRAF
+    service:
+      name: telegraf
+      state: reloaded
+    delegate_to: "{{ telegrafhost }}"
+    become: yes
+    run_once: true
