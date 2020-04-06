@@ -1,20 +1,23 @@
-[ntp]
-de.pool.ntp.org geohash=u336 #Germany
-es.pool.ntp.org geohash=ezjm #Spain
-no.pool.ntp.org geohash=u4xs #Norway
-uk.pool.ntp.org geohash=gcpu #United Kingdom
-eg.pool.ntp.org geohash=stq4 #Egypt
-za.pool.ntp.org geohash=kekj #South Afrika
-hk.pool.ntp.org geohash=wecp #Hong Kong
-sg.pool.ntp.org geohash=w21z #Singapore
-in.pool.ntp.org geohash=ttnf #Indien
-ca.pool.ntp.org geohash=f244 #Canada
-mx.pool.ntp.org geohash=9g3w #Mexico
-us.pool.ntp.org geohash=dqcj #USA
-au.pool.ntp.org geohash=r3gx #Australia
-br.pool.ntp.org geohash=6vjy #Brazil
-cl.pool.ntp.org geohash=66j9 #Chile
-ru.pool.ntp.org geohash=ucft #Russia
+[aws]
+ec2.us-east-1.amazonaws.com geohash=dqb0 #N. Virginia
+ec2.us-east-2.amazonaws.com geohash=dpjn #Ohio
+ec2.us-west-1.amazonaws.com geohash=9qcp #N. California
+ec2.us-west-2.amazonaws.com geohash=9rf7 #Oregon
+ec2.ap-east-1.amazonaws.com geohash=wecp #Hong Kong
+ec2.ap-south-1.amazonaws.com geohash=te7u #Mumbai
+ec2.ap-northeast-2.amazonaws.com geohash=wydm #Seoul
+ec2.ap-southeast-1.amazonaws.com geohash=w21z #Singapore
+ec2.ap-southeast-2.amazonaws.com geohash=r3gx #Sydney
+ec2.ap-northeast-1.amazonaws.com geohash=xn7t #Tokyo
+ec2.ap-northeast-3.amazonaws.com geohash=xn0h #Osaka
+ec2.ca-central-1.amazonaws.com geohash=f244 #Central
+ec2.eu-central-1.amazonaws.com geohash=u0yh #Frankfurt
+ec2.eu-west-1.amazonaws.com geohash=gc7r #Ireland
+ec2.eu-west-2.amazonaws.com geohash=gcpu #London
+ec2.eu-west-3.amazonaws.com geohash=u09t #Paris
+ec2.eu-north-1.amazonaws.com geohash=u6sc #Stockholm
+ec2.me-south-1.amazonaws.com geohash=theu #Bahrain
+ec2.sa-east-1.amazonaws.com geohash=6gyc #São Paulo
 
 [tooling]
 grafanapi ansible_host=192.168.1.12 ansible_ssh_user=pi ansible_ssh_pass=<PASSWORD>
